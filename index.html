@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programa Caminho para Liderança - 3 Módulos</title>
+    <title>Programa Caminho para Liderança - 12 Semanas (3 Módulos)</title>
     <style>
         /* Estilos gerais */
         body {
@@ -41,74 +41,127 @@
 
         /* Estilo para os Módulos */
         details.module-details {
-            border: 2px solid #004085; /* Borda mais forte para módulo */
+            border: 2px solid #004085;
             border-radius: 8px;
-            margin-bottom: 25px; /* Mais espaço entre módulos */
-            background-color: #f8f9fa; /* Fundo levemente diferente */
+            margin-bottom: 25px;
+            background-color: #f8f9fa;
         }
         details.module-details > summary {
             font-weight: bold;
-            padding: 18px; /* Mais padding */
+            padding: 18px;
             cursor: pointer;
             outline: none;
-            color: #004085; /* Cor mais escura */
-            font-size: 1.3em; /* Fonte maior */
-            background-color: #e2e6ea; /* Fundo do sumário do módulo */
-            border-radius: 6px 6px 0 0; /* Cantos arredondados só em cima */
-            display: block; /* Garante comportamento correto */
+            color: #004085;
+            font-size: 1.3em;
+            background-color: #e2e6ea;
+            border-radius: 6px 6px 0 0;
+            display: block;
         }
-        /* Estilo para o sumário do módulo quando aberto */
         details.module-details[open] > summary {
             border-bottom: 2px solid #004085;
         }
-        /* Conteúdo interno do módulo */
         .module-content {
              padding: 20px;
         }
 
+        /* Estilo para os Botões Expandir/Recolher */
+        .module-controls {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd; /* Linha separadora acima das semanas */
+        }
+        .module-controls button {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .module-controls button:hover {
+            background-color: #004085;
+        }
+        .module-controls button.collapse-btn { /* Botão de recolher */
+             background-color: #6c757d;
+        }
+         .module-controls button.collapse-btn:hover {
+             background-color: #5a6268;
+         }
+
+
         /* Estilo para as Semanas (dentro dos módulos) */
         details.week-details {
-            background: #e9ecef; /* Fundo padrão da semana */
+            background: #e9ecef;
             border-radius: 5px;
-            margin-top: 15px; /* Espaço acima de cada semana dentro do módulo */
+            margin-top: 15px;
             margin-bottom: 15px;
-            border: 1px solid #ced4da; /* Borda padrão da semana */
+            border: 1px solid #ced4da;
         }
         details.week-details > summary {
             font-weight: bold;
             padding: 15px;
             cursor: pointer;
             outline: none;
-            color: #0056b3; /* Cor padrão do título da semana */
+            color: #0056b3;
             font-size: 1.1em;
-            display: block; /* Garante comportamento correto */
+            display: block;
         }
-        /* Estilo para o sumário da semana quando aberto */
         details.week-details[open] > summary {
              border-bottom: 1px solid #ced4da;
-             background-color: #dee2e6; /* Fundo levemente mais escuro ao abrir */
+             background-color: #dee2e6;
         }
-        /* Conteúdo interno da semana */
         .week-content {
             padding: 15px;
-            border-top: 1px solid #ced4da; /* Linha separadora */
+            border-top: 1px solid #ced4da;
         }
         .week-content h3 {
             color: #333;
             margin-top: 15px;
             font-size: 1.1em;
-            border-bottom: 1px solid #eee; /* Linha sutil abaixo dos H3 */
+            border-bottom: 1px solid #eee;
             padding-bottom: 5px;
             margin-bottom: 10px;
         }
         .week-content ul {
             list-style: disc;
             margin-left: 20px;
-            padding-left: 0; /* Remove padding padrão do UL */
+            padding-left: 0;
         }
          .week-content li {
             margin-bottom: 8px;
          }
+
+        /* Estilo para o Botão do Google Drive */
+        .drive-button-container {
+            margin-top: 15px; /* Espaço acima do botão */
+            padding-top: 10px;
+            border-top: 1px dashed #ccc; /* Linha separadora opcional */
+        }
+        a.drive-button {
+            display: inline-block;
+            background-color: #4285F4; /* Cor do Google Drive */
+            color: white;
+            padding: 10px 18px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        a.drive-button:hover {
+            background-color: #3578E5;
+            text-decoration: none;
+            color: white;
+        }
+        /* Ícone simples (opcional) */
+        a.drive-button::before {
+            content: '📁'; /* Ou outro ícone/imagem */
+            margin-right: 8px;
+        }
+
 
          /* Estilo para Recursos Adicionais */
          h2.resources-title {
@@ -120,7 +173,7 @@
          }
          .resources-content {
              padding: 15px;
-             background: #f8f9fa; /* Fundo consistente com módulos */
+             background: #f8f9fa;
              border: 1px solid #ced4da;
              border-radius: 5px;
              margin-top: 15px;
@@ -147,308 +200,526 @@
     <div class="container">
         <h1>Programa Caminho para Liderança</h1>
         <p>Bem-vindo(a) ao Programa Caminho para Liderança!</p>
-        <p>Este programa intensivo foi desenhado para capacitar conferentes, assistentes e líderes de logística como você a assumirem ou fortalecerem seu papel de liderança no nosso centro de distribuição. Ele está agora estruturado em <strong>3 módulos progressivos</strong> (Iniciante, Intermediário, Avançado), combinando teoria, vivências práticas, simulações e mentoria individualizada para preparar você para os desafios da gestão de operações e pessoas.</p>
+        <p>Este programa intensivo, com duração de <strong>12 semanas</strong>, foi desenhado para capacitar conferentes, assistentes e líderes de logística como você a assumirem ou fortalecerem seu papel de liderança no nosso centro de distribuição. Ele está estruturado em <strong>3 módulos progressivos de 4 semanas cada</strong> (Iniciante, Intermediário, Avançado), combinando teoria, vivências práticas, simulações e mentoria individualizada para preparar você para os desafios da gestão de operações e pessoas.</p>
         <p><strong>Navegue pelos módulos e suas respectivas semanas abaixo para acessar o conteúdo e materiais:</strong></p>
 
-        <details class="module-details">
-            <summary>Módulo 1: Iniciante - Fundamentos Essenciais</summary>
-            <div class="module-content">
-                <p>Este módulo estabelece as bases da liderança e da comunicação eficaz, essenciais para iniciar sua jornada.</p>
+        <details class="module-details" open> <summary>Módulo 1: Iniciante - Fundamentos Essenciais (Semanas 1-4)</summary>
+            <div class="module-content" id="module-1-content"> <p>Este módulo estabelece as bases da liderança e da comunicação eficaz, essenciais para iniciar sua jornada.</p>
+                <div class="module-controls">
+                    <button onclick="expandWeeks('module-1-content')">Expandir Semanas</button>
+                    <button class="collapse-btn" onclick="collapseWeeks('module-1-content')">Recolher Semanas</button>
+                </div>
 
                 <details class="week-details">
-                    <summary>Semana 1: Fundamentos da Liderança</summary>
+                    <summary>Semana 1: O Papel do Líder e Responsabilidades</summary>
                     <div class="week-content">
                         <h3>Objetivos da Semana:</h3>
                         <ul>
-                            <li>Compreender o papel e as responsabilidades de um líder no contexto logístico.</li>
-                            <li>Identificar diferentes estilos de liderança e refletir sobre o próprio estilo.</li>
-                            <li>Entender a importância do equilíbrio entre a responsabilidade técnica e humana.</li>
-                            <li>Iniciar a observação prática da liderança no dia a dia.</li>
+                            <li>Compreender o que significa ser líder no contexto logístico (transição de executor para líder).</li>
+                            <li>Identificar as principais responsabilidades técnicas (processos, metas) e humanas (pessoas, clima) do líder.</li>
+                            <li>Reconhecer as competências essenciais do líder logístico.</li>
                         </ul>
                         <h3>Conteúdo Principal:</h3>
                         <ul>
-                            <li>O que significa ser líder? (Transição de executor para líder).</li>
-                            <li>Estilos de Liderança Clássicos e Situacionais (Autocrático, Democrático, Liberal, Transformacional, Liderança Situacional de Hersey e Blanchard).</li>
-                            <li>As competências essenciais do líder logístico.</li>
-                            <li>Responsabilidade do líder: técnica (processos, metas) e humana (pessoas, clima).</li>
+                            <li>Definição de Liderança vs. Gerência.</li>
+                            <li>O impacto do líder nos resultados e nas pessoas.</li>
+                            <li>Responsabilidade técnica e humana: encontrando o equilíbrio.</li>
+                            <li>Competências chave: Visão, Comunicação, Delegação, Tomada de Decisão, etc.</li>
                         </ul>
                          <h3>Atividade Prática:</h3>
                          <ul>
-                            <li><strong>Sombra com Líder:</strong> Acompanhar um líder experiente em suas rotinas.</li>
-                            <li><strong>Diário de Observações:</strong> Registrar insights, desafios e boas práticas observadas. (Modelo de diário será fornecido).</li>
+                            <li><strong>Sombra com Líder (Parte 1):</strong> Foco na observação das responsabilidades e tarefas diárias.</li>
+                            <li><strong>Diário de Observações (Início):</strong> Registrar as primeiras impressões sobre o papel do líder.</li>
                          </ul>
                         <h3>Materiais de Apoio:</h3>
                         <ul>
-                            <li><span class="resource-tag">[Artigo]</span> <a href="https://www.pontotel.com.br/diferenca-entre-lider-e-chefe/" target="_blank" rel="noopener noreferrer">Diferença entre líder e chefe</a></li>                    
-                            <li><span class="resource-tag">[Vídeo]</span> <a href="https://www.youtube.com/watch?v=nGmnBe8qpx8" target="_blank" rel="noopener noreferrer">Introdução à Liderança Situacional </a></li>
+                             <li><span class="resource-tag">[Artigo]</span> <a href="https://www.pontotel.com.br/diferenca-entre-lider-e-chefe/" target="_blank" rel="noopener noreferrer">Diferença entre líder e chefe</a></li>
                             <li><span class="resource-tag">[Leitura]</span> Capítulo introdutório sobre Liderança (Recomendar livro base como "O Monge e o Executivo" ou link).</li>
                             <li><span class="resource-tag">[Ferramenta]</span> Template: Diário de Observações de Liderança (Substituir por link para download).</li>
                         </ul>
+                        <div class="drive-button-container">
+                             <a href="https://drive.google.com/drive/folders/1Xaimx9pUm9X82f30leP1L2L2336AcOJk?usp=drive_link" class="drive-button" target="_blank" rel="noopener noreferrer" title="Acessar pasta com materiais da Semana 1 no Google Drive">
+                                 Pasta da Semana 1 no Drive
+                             </a>
+                             </div>
                         <h3>Para Refletir/Pesquisar:</h3>
                         <ul>
-                            <li>Quais líderes (dentro ou fora da empresa) você admira e por quê? Qual estilo de liderança eles parecem adotar?</li>
-                            <li>Quais são os maiores desafios que você antecipa ao assumir/fortalecer um papel de liderança?</li>
+                            <li>Quais aspectos do papel de líder mais te atraem e quais te parecem mais desafiadores?</li>
+                            <li>Liste 3 competências de liderança que você gostaria de desenvolver neste programa.</li>
                         </ul>
                     </div>
                 </details> <details class="week-details">
-                    <summary>Semana 2: Comunicação Eficaz</summary>
+                    <summary>Semana 2: Estilos de Liderança e Autoconhecimento</summary>
                     <div class="week-content">
                         <h3>Objetivos da Semana:</h3>
                         <ul>
-                            <li>Desenvolver habilidades de comunicação assertiva.</li>
-                            <li>Praticar a escuta ativa como ferramenta de conexão e compreensão.</li>
-                            <li>Aprender a conduzir reuniões mais produtivas.</li>
-                            <li>Entender como diferentes perfis comportamentais (DISC) influenciam a comunicação.</li>
-                            <li>Observar a comunicação em diferentes setores.</li>
+                            <li>Identificar diferentes estilos de liderança (Autocrático, Democrático, Liberal, Situacional, Transformacional).</li>
+                            <li>Refletir sobre o próprio estilo de liderança predominante ou natural.</li>
+                            <li>Entender a importância da Liderança Situacional (Hersey e Blanchard).</li>
+                            <li>Iniciar o processo de autoconhecimento como base para a liderança.</li>
+                        </ul>
+                        <h3>Conteúdo Principal:</h3>
+                        <ul>
+                            <li>Exploração dos Estilos de Liderança Clássicos.</li>
+                            <li>Aprofundamento na Liderança Situacional: Adaptando o estilo ao liderado e à situação.</li>
+                            <li>A importância do autoconhecimento: Valores, pontos fortes, áreas de desenvolvimento.</li>
+                            <li>Introdução a ferramentas de assessment (DISC ou similar - foco conceitual).</li>
+                        </ul>
+                        <h3>Atividade Prática:</h3>
+                        <ul>
+                            <li><strong>Discussão em Grupo:</strong> Compartilhar percepções sobre diferentes estilos de liderança observados.</li>
+                            <li><strong>Auto-reflexão Guiada:</strong> Exercício sobre valores pessoais e estilo preferido de interação.</li>
+                            <li><strong>Sombra com Líder (Parte 2):</strong> Foco na observação de como o líder adapta seu estilo.</li>
+                        </ul>
+                        <h3>Materiais de Apoio:</h3>
+                        <ul>
+                            <li><span class="resource-tag">[Vídeo]</span> <a href="https://www.youtube.com/watch?v=nGmnBe8qpx8" target="_blank" rel="noopener noreferrer">Introdução à Liderança Situacional </a></li>
+                            <li><span class="resource-tag">[Artigo]</span> "Por que o Autoconhecimento é Crucial para Líderes" (Buscar link relevante).</li>
+                            <li><span class="resource-tag">[Leitura]</span> Resumo sobre os principais estilos de liderança.</li>
+                        </ul>
+                         <div class="drive-button-container">
+                             <a href="https://drive.google.com/drive/folders/1IPBIVreEP4qprQmYruTSBNUCRcwRAoCR?usp=drive_link" class="drive-button" target="_blank" rel="noopener noreferrer" title="Acessar pasta com materiais da Semana 2 no Google Drive">
+                                 Pasta da Semana 2 no Drive
+                             </a>
+                             </div>
+                        <h3>Para Refletir/Pesquisar:</h3>
+                        <ul>
+                            <li>Em que situações você acredita que cada estilo de liderança é mais eficaz?</li>
+                            <li>Quais são seus 3 principais valores pessoais e como eles podem influenciar sua liderança?</li>
+                        </ul>
+                    </div>
+                </details> <details class="week-details">
+                    <summary>Semana 3: Comunicação Assertiva e Escuta Ativa</summary>
+                    <div class="week-content">
+                        <h3>Objetivos da Semana:</h3>
+                        <ul>
+                            <li>Diferenciar comunicação assertiva, passiva e agressiva.</li>
+                            <li>Desenvolver técnicas de comunicação assertiva para expressar ideias e necessidades claramente.</li>
+                            <li>Compreender e praticar os princípios da escuta ativa.</li>
+                            <li>Reconhecer barreiras comuns na comunicação.</li>
                         </ul>
                         <h3>Conteúdo Principal:</h3>
                          <ul>
-                            <li>Comunicação Assertiva vs. Passiva vs. Agressiva.</li>
-                            <li>Técnicas de Escuta Ativa (Perguntar, Parafrasear, Sumarizar, Espelhar).</li>
-                            <li>Planejamento e Condução de Reuniões Eficazes (Pauta, Tempo, Papéis, Follow-up).</li>
-                            <li>Introdução ao Modelo DISC: Compreendendo seu perfil e o dos outros para adaptar a comunicação.</li>
+                            <li>Os 3 Tipos de Comunicação: Passiva, Agressiva e Assertiva.</li>
+                            <li>Técnicas de Assertividade: Mensagens "Eu", dizer "não" respeitosamente, defender seus direitos.</li>
+                            <li>Escuta Ativa: O que é e por que é importante (Perguntar, Parafrasear, Sumarizar, Espelhar).</li>
+                            <li>Barreiras na Comunicação: Ruídos, pressuposições, falta de clareza.</li>
                          </ul>
                         <h3>Atividade Prática:</h3>
                         <ul>
-                            <li><strong>Rodízio entre Setores:</strong> Passar curtos períodos em diferentes áreas para observar a dinâmica e a comunicação.</li>
-                            <li><strong>Simulação de Reunião:</strong> Planejar e conduzir uma pequena reunião simulada com feedback dos colegas e mentor.</li>
+                             <li><strong>Role-play:</strong> Praticar comunicação assertiva em cenários comuns (pedir ajuda, dar instrução, discordar).</li>
+                             <li><strong>Exercício de Escuta Ativa em Pares:</strong> Praticar as técnicas de escuta ativa.</li>
+                             <li><strong>Rodízio entre Setores (Parte 1):</strong> Observar a comunicação interpessoal nas equipes.</li>
                          </ul>
                         <h3>Materiais de Apoio:</h3>
                         <ul>
-                            <li><span class="resource-tag">[Vídeo]</span> "O Poder da Escuta Ativa" (Substituir por link real)</li>
-                            <li><span class="resource-tag">[Artigo]</span> "Como dar e receber feedback usando a comunicação assertiva" (Substituir por link real)</li>
-                            <li><span class="resource-tag">[Ferramenta]</span> Checklist para Planejamento de Reuniões Produtivas (Substituir por link para download).</li>
-                            <li><span class="resource-tag">[Leitura]</span> Resumo explicativo dos perfis DISC e dicas de comunicação para cada um (Substituir por link real).</li>
+                            <li><span class="resource-tag">[Vídeo]</span> "O Poder da Escuta Ativa" (Substituir por link real - TED Talk ou similar).</li>
+                            <li><span class="resource-tag">[Artigo]</span> "Como ser mais assertivo no trabalho" (Substituir por link real).</li>
+                            <li><span class="resource-tag">[Checklist]</span> Dicas rápidas para Escuta Ativa.</li>
                         </ul>
+                         <div class="drive-button-container">
+                             <a href="https://drive.google.com/drive/folders/1DukoVwjVvwLNKMHlmOpLjHIBD-0qJzpP?usp=drive_link" class="drive-button" target="_blank" rel="noopener noreferrer" title="Acessar pasta com materiais da Semana 3 no Google Drive">
+                                 Pasta da Semana 3 no Drive
+                             </a>
+                             </div>
                         <h3>Para Refletir/Pesquisar:</h3>
                          <ul>
-                            <li>Reflita sobre uma situação recente onde sua comunicação poderia ter sido mais eficaz. O que você faria diferente?</li>
-                            <li>Pesquise sobre a Comunicação Não-Violenta (CNV) de Marshall Rosenberg e como ela se aplica ao ambiente de trabalho.</li>
+                            <li>Reflita sobre uma situação recente onde sua comunicação poderia ter sido mais assertiva. O que você faria diferente?</li>
+                            <li>Quais são as maiores barreiras de comunicação que você observa no seu dia a dia?</li>
+                         </ul>
+                    </div>
+                </details> <details class="week-details">
+                    <summary>Semana 4: Reuniões Produtivas e Perfis (DISC)</summary>
+                    <div class="week-content">
+                        <h3>Objetivos da Semana:</h3>
+                        <ul>
+                            <li>Aprender a planejar, conduzir e acompanhar reuniões de forma eficaz.</li>
+                            <li>Entender o Modelo DISC (Dominância, Influência, Estabilidade, Conformidade) para compreender perfis comportamentais.</li>
+                            <li>Reconhecer como adaptar a comunicação a diferentes perfis DISC.</li>
+                        </ul>
+                        <h3>Conteúdo Principal:</h3>
+                         <ul>
+                            <li>Planejamento de Reuniões: Definição de objetivo, pauta, participantes, tempo.</li>
+                            <li>Condução de Reuniões: Papéis (líder, secretário), gerenciamento do tempo, foco, registro de decisões/ações.</li>
+                            <li>Follow-up: Acompanhamento das ações definidas.</li>
+                            <li>Introdução ao Modelo DISC: Características de cada perfil.</li>
+                            <li>Como se comunicar eficazmente com cada perfil DISC.</li>
+                         </ul>
+                        <h3>Atividade Prática:</h3>
+                        <ul>
+                            <li><strong>Simulação de Reunião:</strong> Planejar e conduzir (ou participar ativamente) de uma pequena reunião simulada com feedback.</li>
+                            <li><strong>Análise de Perfis (Exercício):</strong> Identificar possíveis perfis DISC em personagens ou colegas (com base em comportamentos observáveis, de forma respeitosa e hipotética).</li>
+                            <li><strong>Rodízio entre Setores (Parte 2):</strong> Observar a dinâmica de reuniões ou interações em grupo.</li>
+                        </ul>
+                        <h3>Materiais de Apoio:</h3>
+                        <ul>
+                            <li><span class="resource-tag">[Ferramenta]</span> Checklist para Planejamento de Reuniões Produtivas (Substituir por link para download).</li>
+                            <li><span class="resource-tag">[Leitura]</span> Resumo explicativo dos perfis DISC e dicas de comunicação para cada um (Substituir por link real).</li>
+                             <li><span class="resource-tag">[Artigo]</span> "Como evitar reuniões improdutivas" (Substituir por link real).</li>
+                        </ul>
+                         <div class="drive-button-container">
+                             <a href="https://drive.google.com/drive/folders/1a7qPzy0vMcgUNBUM83JgTqotDMIwCnCU?usp=drive_link" class="drive-button" target="_blank" rel="noopener noreferrer" title="Acessar pasta com materiais da Semana 4 no Google Drive">
+                                 Pasta da Semana 4 no Drive
+                             </a>
+                             </div>
+                        <h3>Para Refletir/Pesquisar:</h3>
+                         <ul>
+                            <li>Qual o seu perfil DISC predominante (hipoteticamente)? Como isso influencia sua comunicação?</li>
+                            <li>Pense em uma reunião improdutiva que participou. O que poderia ter sido feito diferente usando os conceitos aprendidos?</li>
                          </ul>
                     </div>
                 </details> </div> </details> <details class="module-details">
-            <summary>Módulo 2: Intermediário - Ferramentas e Práticas de Gestão</summary>
-            <div class="module-content">
-                 <p>Neste módulo, você aprofundará suas habilidades em gestão de pessoas, processos operacionais essenciais e conformidade legal.</p>
+            <summary>Módulo 2: Intermediário - Gestão, Operações e Conformidade (Semanas 5-8)</summary>
+            <div class="module-content" id="module-2-content"> <p>Neste módulo, você aprofundará suas habilidades em gestão de pessoas, processos operacionais essenciais e conformidade legal.</p>
+                 <div class="module-controls">
+                    <button onclick="expandWeeks('module-2-content')">Expandir Semanas</button>
+                    <button class="collapse-btn" onclick="collapseWeeks('module-2-content')">Recolher Semanas</button>
+                 </div>
 
                  <details class="week-details">
-                    <summary>Semana 3: Gestão de Pessoas</summary>
+                    <summary>Semana 5: Clima, Engajamento e Gestão de Conflitos</summary>
                     <div class="week-content">
                         <h3>Objetivos da Semana:</h3>
                         <ul>
                             <li>Compreender o impacto do líder no clima organizacional e no engajamento da equipe.</li>
-                            <li>Desenvolver habilidades para gerenciar conflitos de forma construtiva.</li>
-                            <li>Aumentar a inteligência emocional para lidar com as próprias emoções e as da equipe.</li>
-                            <li>Aprender e praticar técnicas de feedback eficaz.</li>
+                            <li>Identificar fatores que influenciam o clima e o engajamento (reconhecimento, desenvolvimento, etc.).</li>
+                            <li>Diagnosticar tipos e causas de conflitos no ambiente de trabalho.</li>
+                            <li>Conhecer e praticar estratégias para gerenciar conflitos de forma construtiva.</li>
                         </ul>
                          <h3>Conteúdo Principal:</h3>
                         <ul>
-                            <li>Fatores que influenciam o Clima e o Engajamento.</li>
-                            <li>Diagnóstico e Estratégias para Gerenciar Conflitos.</li>
-                            <li>Os 5 Pilares da Inteligência Emocional (Daniel Goleman).</li>
-                            <li>Técnicas de Feedback: SBI, Sanduíche (com ressalvas), Construtivo.</li>
+                            <li>Clima Organizacional: O que é e como medir (pesquisa de clima, observação).</li>
+                            <li>Engajamento: Fatores motivacionais (Herzberg) e o papel do líder.</li>
+                            <li>Conflitos: Tipos (intrapessoal, interpessoal, intergrupal), causas comuns.</li>
+                            <li>Estilos de Gestão de Conflitos (Competição, Acomodação, Afastamento, Acordo, Colaboração).</li>
+                            <li>Mediação de Conflitos: O papel do líder como mediador.</li>
                         </ul>
                          <h3>Atividade Prática:</h3>
                         <ul>
-                            <li><strong>Role-play de Conversas Difíceis:</strong> Simular situações como feedback, mediação de conflitos.</li>
-                            <li><strong>Sessão de Feedback:</strong> Dar e receber feedback estruturado.</li>
-                         </ul>
+                            <li><strong>Estudo de Caso:</strong> Analisar um cenário de baixo engajamento ou conflito e propor ações.</li>
+                            <li><strong>Role-play:</strong> Simular a mediação de um conflito simples entre dois membros da equipe.</li>
+                        </ul>
                          <h3>Materiais de Apoio:</h3>
                          <ul>
-                            <li><span class="resource-tag">[Artigo]</span> "Como criar um ambiente de trabalho psicologicamente seguro" (Substituir por link real)</li>
-                            <li><span class="resource-tag">[Vídeo]</span> "Inteligência Emocional no Trabalho" (Substituir por link real)</li>
-                            <li><span class="resource-tag">[Ferramenta]</span> Roteiro para Feedback SBI (Substituir por link para download).</li>
-                            <li><span class="resource-tag">[Leitura]</span> Estudo de caso sobre gestão de conflitos (Substituir por link real).</li>
+                            <li><span class="resource-tag">[Artigo]</span> "Como criar um ambiente de trabalho psicologicamente seguro" (Substituir por link real).</li>
+                            <li><span class="resource-tag">[Leitura]</span> Estudo de caso sobre gestão de conflitos em equipes logísticas (Substituir por link real).</li>
+                            <li><span class="resource-tag">[Vídeo]</span> "A importância do Engajamento no Trabalho" (Substituir por link real).</li>
                          </ul>
+                          <div class="drive-button-container">
+                             <a href="https://drive.google.com/drive/folders/1-UabjULhij1x4QafWC1IxVKX2wakJy04?usp=drive_link" class="drive-button" target="_blank" rel="noopener noreferrer" title="Acessar pasta com materiais da Semana 5 no Google Drive">
+                                 Pasta da Semana 5 no Drive
+                             </a>
+                             </div>
                         <h3>Para Refletir/Pesquisar:</h3>
                          <ul>
-                            <li>Qual pilar da inteligência emocional é seu ponto forte e qual precisa desenvolver?</li>
-                            <li>Pesquise sobre a Teoria dos Dois Fatores de Herzberg.</li>
+                            <li>Quais ações práticas você pode implementar para melhorar o clima e o engajamento na sua área?</li>
+                            <li>Qual seu estilo predominante de lidar com conflitos? Em que situações ele é útil e quando pode ser prejudicial?</li>
                          </ul>
                     </div>
                 </details> <details class="week-details">
-                    <summary>Semana 4: Indicadores e Rotinas (Op. Logísticas I)</summary>
+                    <summary>Semana 6: Inteligência Emocional e Feedback</summary>
                     <div class="week-content">
                         <h3>Objetivos da Semana:</h3>
                         <ul>
-                            <li>Ler e interpretar KPIs logísticos.</li>
-                            <li>Definir e gerenciar metas SMART.</li>
-                            <li>Compreender planejamento de turnos e rotinas.</li>
-                            <li>Familiarizar-se com WMS, Coletor, Romaneio.</li>
-                            <li>Analisar dados para identificar problemas e oportunidades.</li>
+                            <li>Compreender os 5 pilares da Inteligência Emocional (Daniel Goleman).</li>
+                            <li>Desenvolver a autoconsciência e a autogestão emocional.</li>
+                            <li>Aumentar a empatia e as habilidades sociais no contexto da liderança.</li>
+                            <li>Aprender e praticar técnicas de feedback eficaz (construtivo e de reconhecimento).</li>
+                        </ul>
+                         <h3>Conteúdo Principal:</h3>
+                        <ul>
+                            <li>Inteligência Emocional: Autoconsciência, Autogestão, Motivação, Empatia, Habilidades Sociais.</li>
+                            <li>Gerenciando Emoções: Reconhecendo gatilhos e respondendo de forma consciente.</li>
+                            <li>Empatia na Liderança: Compreendendo a perspectiva do outro.</li>
+                            <li>A Importância do Feedback para o Desenvolvimento.</li>
+                            <li>Técnicas de Feedback: SBI (Situação, Comportamento, Impacto), Feedback Sanduíche (com ressalvas), Feedback Construtivo focado em comportamento.</li>
+                            <li>Como receber feedback de forma aberta.</li>
+                        </ul>
+                         <h3>Atividade Prática:</h3>
+                        <ul>
+                            <li><strong>Exercício de Autoconsciência Emocional:</strong> Mapear emoções comuns no trabalho.</li>
+                            <li><strong>Sessão de Feedback Estruturado:</strong> Dar e receber feedback (usando SBI) entre colegas sobre atividades do programa ou situações reais (com cuidado).</li>
+                            <li><strong>Role-play de Conversa Difícil (Feedback):</strong> Simular a entrega de um feedback construtivo.</li>
+                        </ul>
+                         <h3>Materiais de Apoio:</h3>
+                         <ul>
+                            <li><span class="resource-tag">[Vídeo]</span> "Inteligência Emocional no Trabalho" (Substituir por link real - pode ser um resumo de Goleman).</li>
+                            <li><span class="resource-tag">[Ferramenta]</span> Roteiro para Feedback SBI (Substituir por link para download).</li>
+                            <li><span class="resource-tag">[Artigo]</span> "Como dar feedbacks que realmente ajudam" (Substituir por link real).</li>
+                         </ul>
+                          <div class="drive-button-container">
+                             <a href="https://drive.google.com/drive/folders/14GJBOi2DCJOZ1iteOFUYgBglkXc1OnRj?usp=drive_link" class="drive-button" target="_blank" rel="noopener noreferrer" title="Acessar pasta com materiais da Semana 6 no Google Drive">
+                                 Pasta da Semana 6 no Drive
+                             </a>
+                             </div>
+                        <h3>Para Refletir/Pesquisar:</h3>
+                         <ul>
+                            <li>Qual dos 5 pilares da inteligência emocional você considera seu ponto mais forte e qual precisa de mais desenvolvimento? Por quê?</li>
+                            <li>Pense em um feedback que você recebeu e que foi útil. O que o tornou eficaz? E um que não foi útil? Por quê?</li>
+                         </ul>
+                    </div>
+                </details> <details class="week-details">
+                    <summary>Semana 7: KPIs, Metas SMART e Análise de Dados</summary>
+                    <div class="week-content">
+                        <h3>Objetivos da Semana:</h3>
+                        <ul>
+                            <li>Identificar e compreender os principais Indicadores de Desempenho (KPIs) da logística (OTIF, Acuracidade, Custo, Produtividade, etc.).</li>
+                            <li>Aprender a definir metas utilizando a metodologia SMART.</li>
+                            <li>Desenvolver noções básicas de análise de dados para identificar tendências e problemas.</li>
+                            <li>Entender a importância do acompanhamento de indicadores para a tomada de decisão.</li>
                         </ul>
                         <h3>Conteúdo Principal:</h3>
                          <ul>
-                            <li>Principais KPIs Logísticos (OTIF, Acuracidade, Custo, etc.).</li>
-                            <li>Metas SMART.</li>
-                            <li>Noções de Planejamento de Turno.</li>
-                            <li>Fluxo Operacional Básico e ferramentas.</li>
-                            <li>Análise de Causa Raiz (Ishikawa, 5 Porquês).</li>
+                            <li>O que são KPIs e por que são importantes?</li>
+                            <li>Principais KPIs Logísticos: Definição, cálculo e interpretação.</li>
+                            <li>Metodologia SMART: Como definir metas Específicas, Mensuráveis, Atingíveis, Relevantes e Temporais.</li>
+                            <li>Coleta e Organização de Dados Básicos.</li>
+                            <li>Análise de Causa Raiz (Introdução a Ishikawa e 5 Porquês).</li>
+                            <li>Visualização de Dados: Gráficos simples para acompanhamento.</li>
                          </ul>
                         <h3>Atividade Prática:</h3>
                         <ul>
-                            <li><strong>Construção de Indicadores:</strong> Calcular KPIs com dados reais/simulados.</li>
-                            <li><strong>Análise de Dados:</strong> Identificar tendências e gargalos.</li>
+                            <li><strong>Construção de Indicadores:</strong> Calcular KPIs selecionados com base em dados (reais ou simulados).</li>
+                            <li><strong>Definição de Metas SMART:</strong> Criar 1 ou 2 metas SMART para um indicador específico.</li>
+                            <li><strong>Análise de Dados (Exercício):</strong> Analisar um conjunto simples de dados e identificar possíveis causas para um problema (usando 5 porquês).</li>
                         </ul>
                         <h3>Materiais de Apoio:</h3>
                         <ul>
-                            <li><span class="resource-tag">[Glossário]</span> Termos e KPIs de Logística (Substituir por link real).</li>
-                            <li><span class="resource-tag">[Artigo]</span> "Como definir Metas SMART" (Substituir por link real).</li>
-                            <li><span class="resource-tag">[Vídeo]</span> "Visão Geral de um Sistema WMS" (Substituir por link real).</li>
-                            <li><span class="resource-tag">[Ferramenta]</span> Template Dashboard KPIs (Substituir por link para download).</li>
+                            <li><span class="resource-tag">[Glossário]</span> <a href="https://docs.google.com/presentation/d/1RkmOzaKdzMmhLHZ3zz00zqahFvHP5G-xYL5G_cuMox4/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Termos e KPIs de Logística</a></li>
+                            <li><span class="resource-tag">[Artigo]</span> "Como definir Metas SMART para sua equipe" (Substituir por link real).</li>
+                            <li><span class="resource-tag">[Ferramenta]</span> Template Dashboard KPIs simples (Excel/Sheets) (Substituir por link para download).</li>
                             <li><span class="resource-tag">[Ferramenta]</span> Modelo Diagrama Ishikawa (Substituir por link para download).</li>
                          </ul>
+                          <div class="drive-button-container">
+                             <a href="https://drive.google.com/drive/folders/1jJet-CxpJOxexiYmszXvJgRUSDDR9107?usp=drive_link" class="drive-button" target="_blank" rel="noopener noreferrer" title="Acessar pasta com materiais da Semana 7 no Google Drive">
+                                 Pasta da Semana 7 no Drive
+                             </a>
+                             </div>
                          <h3>Para Refletir/Pesquisar:</h3>
                          <ul>
-                            <li>Quais são os 3 KPIs mais críticos para sua área?</li>
-                            <li>Pesquise sobre "Gemba Walk".</li>
+                            <li>Quais são os 3 KPIs mais críticos para o sucesso da sua área específica dentro da logística? Como eles se conectam?</li>
+                            <li>Como você pode usar os dados disponíveis hoje para tomar melhores decisões na sua rotina?</li>
                          </ul>
                     </div>
                 </details> <details class="week-details">
-                    <summary>Semana 5: Legislação Trabalhista e Segurança</summary>
+                    <summary>Semana 8: Processos, Ferramentas e Legislação Básica</summary>
                     <div class="week-content">
                         <h3>Objetivos da Semana:</h3>
-                         <ul>
-                            <li>Adquirir noções básicas da CLT aplicáveis à liderança.</li>
-                            <li>Compreender regras sobre jornada, horas extras, banco de horas.</li>
-                            <li>Saber aplicar advertências, suspensões e entender justa causa.</li>
-                            <li>Conscientizar-se sobre segurança no trabalho e o papel do líder na prevenção.</li>
-                         </ul>
+                        <ul>
+                            <li>Compreender o fluxo operacional básico da logística (recebimento, armazenagem, picking, expedição).</li>
+                            <li>Familiarizar-se com as ferramentas operacionais chave (WMS, Coletor, Romaneio) e seu papel.</li>
+                            <li>Adquirir noções básicas da CLT aplicáveis ao dia a dia (contrato, direitos/deveres básicos).</li>
+                            <li>Entender os conceitos de jornada de trabalho, horas extras e banco de horas.</li>
+                        </ul>
                         <h3>Conteúdo Principal:</h3>
                          <ul>
-                            <li>CLT: Contrato, direitos e deveres.</li>
-                            <li>Jornada de Trabalho, Horas Extras, Banco de Horas.</li>
-                            <li>Poder Disciplinar: Advertência, Suspensão, Justa Causa.</li>
-                            <li>Segurança no Trabalho: Responsabilidades, NRs chave (NR-11, NR-17, etc.), CIPA, EPIs.</li>
+                            <li>Visão Geral do Fluxo Logístico no CD.</li>
+                            <li>Papel e Funcionalidades Básicas do WMS (Sistema de Gerenciamento de Armazém).</li>
+                            <li>Uso do Coletor de Dados nas operações.</li>
+                            <li>Importância do Romaneio.</li>
+                            <li>CLT: Contrato de trabalho, direitos e deveres essenciais do empregado e empregador.</li>
+                            <li>Jornada de Trabalho: Limites legais, intervalos, DSR.</li>
+                            <li>Horas Extras vs. Banco de Horas: Regras gerais de pagamento e compensação.</li>
                          </ul>
-                         <h3>Atividade Prática:</h3>
-                         <ul>
-                            <li><strong>Estudo de Casos:</strong> Analisar cenários trabalhistas e de segurança.</li>
-                            <li><strong>Simulações:</strong> Praticar aplicação de advertência ou diálogo sobre segurança.</li>
-                         </ul>
-                         <h3>Materiais de Apoio:</h3>
-                         <ul>
+                        <h3>Atividade Prática:</h3>
+                        <ul>
+                            <li><strong>Mapeamento de Fluxo (Simplificado):</strong> Desenhar o fluxo básico de um produto na sua área.</li>
+                            <li><strong>Discussão sobre Ferramentas:</strong> Compartilhar experiências e desafios no uso do WMS/Coletor.</li>
+                            <li><strong>Estudo de Caso (CLT Básico):</strong> Analisar situações simples sobre jornada e horas extras.</li>
+                        </ul>
+                        <h3>Materiais de Apoio:</h3>
+                        <ul>
+                            <li><span class="resource-tag">[Vídeo]</span> "Visão Geral de um Sistema WMS" (Substituir por link real ou demonstração interna).</li>
                             <li><span class="resource-tag">[Link]</span> Acesso ao texto da CLT (Ex: <a href="http://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm" target="_blank" rel="noopener noreferrer">Portal Planalto</a>).</li>
-                            <li><span class="resource-tag">[Resumo]</span> Guia rápido sobre NRs aplicáveis (Substituir por link real).</li>
-                            <li><span class="resource-tag">[Artigo]</span> "O papel do líder na promoção de um ambiente seguro" (Substituir por link real).</li>
-                            <li><span class="resource-tag">[Checklist]</span> Verificação de segurança básica (Substituir por link para download).</li>
+                            <li><span class="resource-tag">[Resumo]</span> Guia rápido sobre fluxo logístico e ferramentas.</li>
                          </ul>
+                          <div class="drive-button-container">
+                             <a href="https://drive.google.com/drive/folders/1mYez0mpxANX055LXIkik1oECEioTwqN9?usp=drive_link" class="drive-button" target="_blank" rel="noopener noreferrer" title="Acessar pasta com materiais da Semana 8 no Google Drive">
+                                 Pasta da Semana 8 no Drive
+                             </a>
+                             </div>
                          <h3>Para Refletir/Pesquisar:</h3>
                          <ul>
-                            <li>Quais são os riscos de segurança mais comuns em sua área?</li>
-                            <li>Pesquise sobre as consequências de acidentes de trabalho ou descumprimento da lei.</li>
+                            <li>Qual a maior dificuldade que você enfrenta (ou observa) no uso das ferramentas operacionais?</li>
+                            <li>Quais são as dúvidas mais comuns sobre jornada de trabalho e horas extras na sua equipe?</li>
                          </ul>
                     </div>
                 </details> </div> </details> <details class="module-details">
-            <summary>Módulo 3: Avançado - Aplicação Estratégica e Desenvolvimento</summary>
-            <div class="module-content">
-                 <p>O último módulo foca na aplicação prática da liderança, gestão estratégica de times e no seu desenvolvimento contínuo como líder.</p>
+            <summary>Módulo 3: Avançado - Aplicação Estratégica e Desenvolvimento (Semanas 9-12)</summary>
+            <div class="module-content" id="module-3-content"> <p>O último módulo foca na aplicação prática da liderança, gestão estratégica de times e no seu desenvolvimento contínuo como líder.</p>
+                  <div class="module-controls">
+                    <button onclick="expandWeeks('module-3-content')">Expandir Semanas</button>
+                    <button class="collapse-btn" onclick="collapseWeeks('module-3-content')">Recolher Semanas</button>
+                 </div>
 
                  <details class="week-details">
-                     <summary>Semana 6: Gestão de Times e Delegação (Op. Logísticas II)</summary>
+                     <summary>Semana 9: Legislação Aprofundada e Segurança</summary>
+                    <div class="week-content">
+                        <h3>Objetivos da Semana:</h3>
+                         <ul>
+                            <li>Compreender o poder disciplinar do empregador (advertência, suspensão, justa causa).</li>
+                            <li>Conhecer os principais motivos que levam à justa causa.</li>
+                            <li>Conscientizar-se sobre a importância da segurança no trabalho e as responsabilidades legais.</li>
+                            <li>Identificar as Normas Regulamentadoras (NRs) chave para a logística e o papel da CIPA e EPIs.</li>
+                         </ul>
+                        <h3>Conteúdo Principal:</h3>
+                         <ul>
+                            <li>Poder Disciplinar: Advertência (verbal e escrita), Suspensão.</li>
+                            <li>Justa Causa: Principais hipóteses legais (art. 482 CLT).</li>
+                            <li>Segurança no Trabalho: Responsabilidades do empregador e do empregado.</li>
+                            <li>NRs Relevantes: Foco nas NRs aplicáveis à operação (ex: NR-11 Movimentação, NR-17 Ergonomia, etc.).</li>
+                            <li>CIPA (Comissão Interna de Prevenção de Acidentes): O que é e qual seu papel.</li>
+                            <li>EPIs (Equipamentos de Proteção Individual): Obrigatoriedade e uso correto.</li>
+                         </ul>
+                         <h3>Atividade Prática:</h3>
+                         <ul>
+                            <li><strong>Estudo de Casos (Disciplina e Segurança):</strong> Analisar cenários complexos envolvendo advertências, justa causa ou falhas de segurança.</li>
+                            <li><strong>Simulações:</strong> Praticar a aplicação de uma advertência formal ou a condução de um diálogo sobre segurança com um membro da equipe.</li>
+                            <li><strong>Checklist de Segurança:</strong> Aplicar um checklist de verificação de segurança na área.</li>
+                         </ul>
+                         <h3>Materiais de Apoio:</h3>
+                         <ul>
+                            <li><span class="resource-tag">[Resumo]</span> Guia rápido sobre as principais NRs aplicáveis à operação (Substituir por link real ou material interno).</li>
+                            <li><span class="resource-tag">[Artigo]</span> "O papel do líder na promoção de um ambiente de trabalho seguro" (Substituir por link real).</li>
+                            <li><span class="resource-tag">[Checklist]</span> Verificação de segurança básica para o início do turno (Substituir por link para download).</li>
+                            <li><span class="resource-tag">[Leitura]</span> Artigo sobre as consequências legais de acidentes de trabalho.</li>
+                         </ul>
+                          <div class="drive-button-container">
+                             <a href="https://drive.google.com/drive/folders/19dxrI_T6xOxx1-KrQ0crXSLykoqnsPkt?usp=drive_link" class="drive-button" target="_blank" rel="noopener noreferrer" title="Acessar pasta com materiais da Semana 9 no Google Drive">
+                                 Pasta da Semana 9 no Drive
+                             </a>
+                             </div>
+                         <h3>Para Refletir/Pesquisar:</h3>
+                         <ul>
+                            <li>Quais são os riscos de segurança mais comuns na sua área de atuação? Que medidas preventivas podem ser reforçadas pelo líder?</li>
+                            <li>Qual a importância de documentar corretamente as ações disciplinares e de segurança?</li>
+                         </ul>
+                    </div>
+                </details> <details class="week-details">
+                    <summary>Semana 10: Planejamento de Turno e Delegação Eficaz</summary>
                     <div class="week-content">
                          <h3>Objetivos da Semana:</h3>
                         <ul>
-                            <li>Planejar e organizar o trabalho da equipe.</li>
-                            <li>Desenvolver a habilidade de delegar tarefas eficazmente.</li>
-                            <li>Acompanhar e dar suporte à equipe na execução.</li>
-                            <li>Reforçar aplicação prática das ferramentas e processos.</li>
+                            <li>Aprender a realizar um planejamento de turno detalhado (demanda vs. capacidade, alocação de recursos e tarefas).</li>
+                            <li>Desenvolver a habilidade de delegar tarefas de forma eficaz (O quê, Para quem, Como, Prazo, Acompanhamento).</li>
+                            <li>Compreender os diferentes níveis de delegação.</li>
+                            <li>Introduzir conceitos de melhoria contínua (Kaizen, PDCA) aplicados à gestão do time.</li>
                         </ul>
                          <h3>Conteúdo Principal:</h3>
                         <ul>
-                            <li>Planejamento de Turno Detalhado.</li>
-                            <li>Princípios da Delegação Eficaz e Níveis de Delegação.</li>
-                            <li>Monitoramento do Desempenho da Equipe.</li>
-                            <li>Introdução a Metodologias de Melhoria Contínua (Kaizen, PDCA).</li>
+                            <li>Planejamento de Turno: Análise da demanda, capacidade da equipe, alocação de tarefas, balanceamento.</li>
+                            <li>Princípios da Delegação Eficaz: Clareza, confiança, autoridade vs. responsabilidade.</li>
+                            <li>Níveis de Delegação: Do microgerenciamento à autonomia total.</li>
+                            <li>Monitoramento do Desempenho da Equipe pós-delegação.</li>
+                            <li>Melhoria Contínua: Ciclo PDCA (Planejar, Fazer, Checar, Agir) e Kaizen (pequenas melhorias constantes).</li>
                          </ul>
                          <h3>Atividade Prática:</h3>
                         <ul>
-                            <li><strong>Planejamento Real de Turno:</strong> Elaborar plano de trabalho detalhado.</li>
-                            <li><strong>Exercício de Delegação:</strong> Identificar tarefas, definir como delegar e pontos de controle.</li>
-                         </ul>
+                            <li><strong>Planejamento Real de Turno (Exercício):</strong> Elaborar um plano de trabalho detalhado para um turno (real ou simulado), considerando diferentes cenários e alocando tarefas.</li>
+                            <li><strong>Exercício de Delegação:</strong> Identificar tarefas que poderiam ser delegadas na sua rotina, definir como delegaria (nível, instruções, acompanhamento) e apresentar ao mentor/grupo.</li>
+                            <li><strong>Discussão PDCA/Kaizen:</strong> Identificar uma pequena melhoria que poderia ser implementada na área usando um ciclo PDCA simples.</li>
+                        </ul>
                          <h3>Materiais de Apoio:</h3>
                         <ul>
-                            <li><span class="resource-tag">[Artigo]</span> "A Arte de Delegar" (Substituir por link real).</li>
-                            <li><span class="resource-tag">[Template]</span> Modelo Plano de Ação/Trabalho para Turno (Substituir por link para download).</li>
-                            <li><span class="resource-tag">[Vídeo]</span> "Introdução ao Ciclo PDCA" (Substituir por link real).</li>
-                            <li><span class="resource-tag">[Leitura]</span> Estudo de caso sobre eficiência via planejamento/delegação (Substituir por link real).</li>
+                            <li><span class="resource-tag">[Artigo]</span> "A Arte de Delegar: Como Confiar e Empoderar sua Equipe" (Substituir por link real).</li>
+                            <li><span class="resource-tag">[Template]</span> Modelo de Plano de Ação/Trabalho para o Turno (Substituir por link para download).</li>
+                            <li><span class="resource-tag">[Vídeo]</span> "Introdução ao Ciclo PDCA para Melhoria Contínua" (Substituir por link explicativo).</li>
+                            <li><span class="resource-tag">[Leitura]</span> Estudo de caso sobre como um líder logístico melhorou a eficiência da equipe através de melhor planejamento e delegação (Substituir por link real).</li>
                          </ul>
+                          <div class="drive-button-container">
+                             <a href="https://drive.google.com/drive/folders/1EITwUkwDO0uN63h_INfh3MkLpGbLoUrW?usp=drive_link" class="drive-button" target="_blank" rel="noopener noreferrer" title="Acessar pasta com materiais da Semana 10 no Google Drive">
+                                 Pasta da Semana 10 no Drive
+                             </a>
+                             </div>
                         <h3>Para Refletir/Pesquisar:</h3>
                         <ul>
-                            <li>Qual tarefa você tem mais dificuldade em delegar e por quê?</li>
-                            <li>Pesquise sobre a Matriz de Eisenhower (Urgente/Importante).</li>
+                            <li>Qual tarefa você tem mais dificuldade em delegar e por quê? Como você poderia superar essa barreira usando os conceitos aprendidos?</li>
+                            <li>Pesquise sobre a Matriz de Eisenhower (Urgente/Importante) e como ela pode ajudar no planejamento e priorização das tarefas da equipe.</li>
                         </ul>
                     </div>
                 </details> <details class="week-details">
-                    <summary>Semana 7: Liderança Assistida e Mentoria Prática</summary>
+                    <summary>Semana 11: Liderança Assistida e Mentoria Prática</summary>
                     <div class="week-content">
                         <h3>Objetivos da Semana:</h3>
                         <ul>
-                            <li>Aplicar conhecimentos e habilidades em situações reais com suporte do mentor.</li>
-                            <li>Receber feedback direcionado sobre a atuação prática.</li>
-                            <li>Desenvolver a capacidade de analisar e apresentar resultados.</li>
-                            <li>Fortalecer a relação com o mentor.</li>
+                            <li>Aplicar os conhecimentos e habilidades dos módulos anteriores em situações reais, com suporte intensivo do mentor.</li>
+                            <li>Receber feedback direcionado e "on the job" sobre a atuação prática como líder.</li>
+                            <li>Desenvolver a capacidade de analisar resultados da própria atuação e apresentá-los de forma clara.</li>
+                            <li>Fortalecer a relação com o mentor, utilizando-o como recurso estratégico para desafios reais.</li>
+                            <li>Praticar a resolução de problemas em tempo real.</li>
                         </ul>
                          <h3>Conteúdo Principal:</h3>
                         <ul>
-                            <li>Atuação Prática Supervisionada.</li>
-                            <li>Técnicas para Apresentação de Resultados.</li>
-                            <li>Como Maximizar a Mentoria.</li>
-                            <li>Resolução de Problemas em Tempo Real.</li>
+                            <li>Atuação Prática Supervisionada: Assumir responsabilidades de liderança definidas com gestor/mentor.</li>
+                            <li>Técnicas para Apresentação de Resultados e Aprendizados: Estrutura (Contexto, Ação, Resultado, Aprendizado).</li>
+                            <li>Como Maximizar a Mentoria: Preparação prévia, perguntas estratégicas, abertura ao feedback.</li>
+                            <li>Tomada de Decisão sob Pressão: Frameworks simples.</li>
                          </ul>
                         <h3>Atividade Prática:</h3>
                         <ul>
-                            <li><strong>Mentoria Prática Intensiva:</strong> Acompanhamento "on the job".</li>
-                            <li><strong>Apresentação de Resultados Preliminares:</strong> Resumo para mentor/gestor.</li>
+                            <li><strong>Mentoria Prática Intensiva:</strong> O mentor acompanha de perto a atuação do participante na operação, oferecendo orientação e feedback imediato.</li>
+                            <li><strong>Apresentação de Resultados e Aprendizados da Semana:</strong> Preparar e apresentar um resumo dos resultados alcançados, desafios enfrentados e principais aprendizados da semana de atuação prática para o mentor e/ou gestor.</li>
+                            <li><strong>Resolução de Problema Real (com apoio):</strong> Lidar com um desafio operacional ou de equipe que surgir durante a semana, com suporte do mentor.</li>
                         </ul>
                          <h3>Materiais de Apoio:</h3>
                         <ul>
-                            <li><span class="resource-tag">[Guia]</span> "Como se preparar para uma reunião de Mentoria" (Substituir por link real).</li>
-                            <li><span class="resource-tag">[Template]</span> Modelo para apresentação de resultados (Substituir por link para download).</li>
-                            <li><span class="resource-tag">[Artigo]</span> "Lidando com Pressão e Tomando Decisões" (Substituir por link real).</li>
-                        </ul>
+                            <li><span class="resource-tag">[Guia]</span> "Como se preparar para uma reunião de Mentoria Produtiva" (Substituir por link real ou material interno).</li>
+                            <li><span class="resource-tag">[Template]</span> Modelo simples para apresentação de resultados/aprendizados (Substituir por link para download).</li>
+                            <li><span class="resource-tag">[Artigo]</span> "Lidando com Pressão e Tomando Decisões como Líder" (Substituir por link real).</li>
+                         </ul>
+                          <div class="drive-button-container">
+                             <a href="https://drive.google.com/drive/folders/1M7v9SRiinxWcSelqRukIiXKFXIDneOpq?usp=drive_link" class="drive-button" target="_blank" rel="noopener noreferrer" title="Acessar pasta com materiais da Semana 11 no Google Drive">
+                                 Pasta da Semana 11 no Drive
+                             </a>
+                             </div>
                          <h3>Para Refletir/Pesquisar:</h3>
                          <ul>
-                            <li>Qual foi o feedback mais impactante do seu mentor?</li>
-                            <li>Reflita sobre uma decisão difícil tomada esta semana.</li>
+                            <li>Qual foi o feedback mais impactante que você recebeu do seu mentor durante a atuação prática? Como você o está utilizando?</li>
+                            <li>Reflita sobre uma decisão difícil que você precisou tomar (ou observou ser tomada) esta semana. Qual foi o processo de pensamento por trás dela e o resultado?</li>
                          </ul>
                     </div>
                 </details> <details class="week-details">
-                    <summary>Semana 8: Encerramento e Plano de Desenvolvimento (PDI)</summary>
+                    <summary>Semana 12: Consolidação, Avaliação e PDI</summary>
                     <div class="week-content">
                          <h3>Objetivos da Semana:</h3>
                          <ul>
-                            <li>Consolidar os aprendizados.</li>
-                            <li>Realizar autoavaliação e receber feedback 360º.</li>
-                            <li>Construir um PDI robusto.</li>
-                            <li>Participar das avaliações finais (simulações).</li>
-                            <li>Apresentar o PDI e receber feedback final.</li>
+                            <li>Consolidar os principais aprendizados do programa completo (12 semanas).</li>
+                            <li>Realizar uma autoavaliação final e receber/analisar o feedback 360º.</li>
+                            <li>Construir um Plano de Desenvolvimento Individual (PDI) robusto e acionável para continuar a jornada de crescimento.</li>
+                            <li>Participar das avaliações finais (simulações práticas com banca).</li>
+                            <li>Apresentar o PDI e receber feedback final do gestor e RH.</li>
                          </ul>
                         <h3>Conteúdo Principal:</h3>
                         <ul>
-                            <li>Revisão dos Conceitos do Programa.</li>
-                            <li>Importância do Desenvolvimento Contínuo.</li>
-                            <li>Estrutura de um PDI (Objetivos, Ações, Recursos, Prazos, Métricas).</li>
-                            <li>Como Interpretar e Utilizar Feedback 360º.</li>
-                            <li>Preparação para Avaliação Final.</li>
-                        </ul>
+                            <li>Revisão e Consolidação dos Principais Conceitos e Ferramentas do Programa.</li>
+                            <li>A Importância do Desenvolvimento Contínuo e do Lifelong Learning para Líderes.</li>
+                            <li>Estrutura Detalhada de um PDI: Objetivos de Desenvolvimento (baseados nos feedbacks e autoavaliação), Ações Específicas, Recursos Necessários, Prazos, Métricas de Sucesso.</li>
+                            <li>Como Interpretar e Utilizar o Feedback 360º para o Desenvolvimento Pessoal e Profissional.</li>
+                            <li>Preparação para a Avaliação Final (Simulações Práticas): Dicas e Orientações.</li>
+                         </ul>
                         <h3>Atividade Prática:</h3>
                          <ul>
-                            <li><strong>Avaliação 360º:</strong> Preencher e receber feedbacks.</li>
-                            <li><strong>Construção e Apresentação do PDI.</strong></li>
-                            <li><strong>Simulações Práticas Finais.</strong></li>
+                            <li><strong>Avaliação 360º:</strong> Preencher autoavaliação e receber/analisar os feedbacks consolidados do gestor, mentor e pares.</li>
+                            <li><strong>Construção do PDI:</strong> Elaborar o PDI individualmente, com apoio final do mentor.</li>
+                            <li><strong>Simulações Práticas Finais:</strong> Participar das simulações avaliadas por uma banca (RH, Gestor, Mentor).</li>
+                            <li><strong>Apresentação do PDI:</strong> Apresentar o plano finalizado ao gestor e RH para alinhamento e feedback.</li>
                          </ul>
                          <h3>Materiais de Apoio:</h3>
                          <ul>
-                            <li><span class="resource-tag">[Template]</span> Modelo Detalhado de PDI (Substituir por link para download).</li>
-                            <li><span class="resource-tag">[Artigo]</span> "Como transformar Feedback em Ação" (Substituir por link real).</li>
-                            <li><span class="resource-tag">[Guia]</span> Dicas para Apresentação do PDI (Substituir por link real).</li>
-                            <li><span class="resource-tag">[Recurso]</span> Lista de Livros, Cursos, etc. (Substituir por link real).</li>
+                            <li><span class="resource-tag">[Template]</span> Modelo Detalhado de Plano de Desenvolvimento Individual (PDI) (Substituir por link para download).</li>
+                            <li><span class="resource-tag">[Artigo]</span> "Como transformar Feedback em Ação: Criando seu PDI" (Substituir por link real).</li>
+                            <li><span class="resource-tag">[Guia]</span> Dicas para Apresentação Eficaz do seu PDI (Substituir por link real ou material interno).</li>
+                            <li><span class="resource-tag">[Recurso]</span> Lista de Livros, Cursos Online e Recursos para Desenvolvimento Contínuo em Liderança e Logística (Substituir por link real ou lista interna).</li>
                          </ul>
+                          <div class="drive-button-container">
+                             <a href="https://drive.google.com/drive/folders/1I4Hjklg_iICTzhilKh0_7rlLoacfQo_W?usp=drive_link" class="drive-button" target="_blank" rel="noopener noreferrer" title="Acessar pasta com materiais da Semana 12 no Google Drive">
+                                 Pasta da Semana 12 no Drive
+                             </a>
+                             </div>
                         <h3>Para Refletir/Pesquisar:</h3>
                         <ul>
-                            <li>Quais foram os 3 maiores aprendizados do programa?</li>
-                            <li>Quais serão seus primeiros passos para colocar seu PDI em prática?</li>
+                            <li>Quais foram os 3 maiores aprendizados que você teve durante este programa de 12 semanas?</li>
+                            <li>Quais serão seus primeiros e mais importantes passos para colocar seu PDI em prática a partir da próxima semana? Como você garantirá o acompanhamento do seu desenvolvimento?</li>
                         </ul>
                     </div>
                 </details> </div> </details> <h2 class="resources-title">Recursos Adicionais Gerais</h2>
@@ -467,6 +738,42 @@
             <p>Estrutura do Curso Gerada por IA.</p>
         </footer>
     </div>
+
+    <script>
+        /**
+         * Expande todas as semanas dentro de um módulo específico.
+         * @param {string} moduleContentId - O ID do elemento div que contém as semanas do módulo.
+         */
+        function expandWeeks(moduleContentId) {
+            const moduleContent = document.getElementById(moduleContentId);
+            if (moduleContent) {
+                // Encontra todos os <details> que representam semanas dentro deste módulo
+                const weekDetails = moduleContent.querySelectorAll('details.week-details');
+                weekDetails.forEach(details => {
+                    details.open = true; // Define o atributo 'open' como verdadeiro
+                });
+            } else {
+                console.error("Elemento do módulo não encontrado:", moduleContentId);
+            }
+        }
+
+        /**
+         * Recolhe todas as semanas dentro de um módulo específico.
+         * @param {string} moduleContentId - O ID do elemento div que contém as semanas do módulo.
+         */
+        function collapseWeeks(moduleContentId) {
+            const moduleContent = document.getElementById(moduleContentId);
+            if (moduleContent) {
+                // Encontra todos os <details> que representam semanas dentro deste módulo
+                const weekDetails = moduleContent.querySelectorAll('details.week-details');
+                weekDetails.forEach(details => {
+                    details.open = false; // Define o atributo 'open' como falso
+                });
+            } else {
+                console.error("Elemento do módulo não encontrado:", moduleContentId);
+            }
+        }
+    </script>
 
 </body>
 </html>
